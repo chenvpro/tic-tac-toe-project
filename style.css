@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap');
+
 body{
     margin: 0;
     background-color: #4099BC;
@@ -7,6 +9,11 @@ body{
 /* Display for computer screen (for at least 1024px)*/
 @media screen and (min-width: 1024px){
     
+    #title{
+        text-align: center;
+        font-family: "Gravitas One", sans-serif;
+    }
+
     #grille{
         width: 300px;
         height: 310px;
@@ -15,7 +22,7 @@ body{
         border-radius: 25px;
         padding: 0;
         position: relative;
-        top: 175px;
+        top: 100px;
         background-color: #82B6D9;
         box-shadow: 10px 10px #00000040;
     }
@@ -58,6 +65,6 @@ body{
         width: 134px;
         margin: auto;
         position: relative;
-        top: 200px;
+        top: 150px;
     }
 }
