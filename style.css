@@ -33,11 +33,12 @@ body{
         display: flex;
     }
 
-    .carre{
+    .cell{
         width: 100px;
         height: 100px;
         margin: 0;
         padding: 0;
+        cursor: pointer;
     }
 
     #bloc1, #bloc4, #bloc7{
