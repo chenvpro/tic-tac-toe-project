@@ -1,6 +1,6 @@
 body{
+    margin: 0;
     background-color: #4099BC;
-    display: flex;
 }
 
 
@@ -15,8 +15,9 @@ body{
         border-radius: 25px;
         padding: 0;
         position: relative;
-        top: 100px;
+        top: 175px;
         background-color: #82B6D9;
+        box-shadow: 10px 10px #00000040;
     }
 
     .line{
@@ -53,4 +54,10 @@ body{
         border-top: 5px solid black;
     }
 
+    #buttonContainer{
+        width: 134px;
+        margin: auto;
+        position: relative;
+        top: 200px;
+    }
 }
