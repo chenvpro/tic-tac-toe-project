@@ -1,6 +1,6 @@
 /* variable needed to made the game work */
 let page = 'start' // the button need to display 'start' if it's the first time game
-let currentPlayer = 'X' // the game start with the first player
+let currentPlayer = 'X' 
 const cells = [...document.querySelectorAll('.cell')]
 const winConditions =  [
     [0, 1, 2],
@@ -14,24 +14,14 @@ const winConditions =  [
 ]
 let options = ["", "", "", "", "", "", "", "", ""]
 
- /* store a button that will show 'start' or 'restart' depending on if it's the first game or if the players want to replay */
+
+/* store a button that will show 'start' or 'restart' depending on if it's the first game or if the players want to replay */
 const button = document.createElement('button')
-/* displaying 'Start' or 'Restart' if the user already play */
-function buttonDisplay() {
-    if (page === 'start'){
-        button.innerHTML = 'Start'
-    } else if (page = 'ingame') {
-        button.remove()
-    } else {
-        button.innerHTML = 'Restart'
-    }
-}
-buttonDisplay();
-button.className = 'playButton' // adding a class name to apply a style on the button
 /* store the container and display the button inside */
 const divButton = document.getElementById('buttonContainer')
 divButton.appendChild(button)
-/* adding some style to the button */
+buttonDisplay()
+/* style for the button */
 button.style.width = "134px"
 button.style.height = "45"
 button.style.margin = "auto"
@@ -44,21 +34,40 @@ button.style.boxShadow = "10px 10px #00000040"
 button.style.fontWeight = "bold"
 button.style.cursor = "pointer"
 
+
+/* display of the button depending on the value of the variable 'page' */
+function buttonDisplay() {
+    if (page === 'start'){
+        button.innerHTML = 'Start'
+    } else if (page = 'ingame') {
+        button.style.visibility ="hidden"
+    } else {
+        button.innerHTML = 'Restart'
+    }
+}
+
+function messageStyle() {
+    /* style of the message box */
+    message.style.width = '155px'
+    message.style.margin = '0 auto 50px auto'
+    message.style.position = 'relative'
+    message.style.top = '25px'
+    message.style.fontFamily = 'Gravitas One'
+    message.style.fontSize = '24px'
+}
+
+/* creating a message box that will show the current player turn and if the game end it will show the winner player */
+const message = document.createElement('p')
+message.innerHTML = `${currentPlayer}'s turn !` // showing the player turn
+const divMessage = document.getElementById('message')
+divMessage.appendChild(message)
+messageStyle()
+message.style.visibility = 'hidden'
+
 function initalizeGame() {
     cells.forEach(cell => cell.addEventListener('click', cellClicked))
     page = 'ingame'
-
-    /* creating a message box that will show the current player turn and if the game end it will show the winner player */
-    const message = document.createElement('h2')
-    message.innerHTML = `${currentPlayer}'s turn !` // showing the player turn
-    const divMessage = document.getElementById('message')
-    divMessage.appendChild(message)
-    /* adding some style to the message box */
-    message.style.margin = 'auto'
-    message.style.fontFamily = 'Gravitas One'
-    message.style.width = '154px'
-    message.style.position = 'relative'
-    message.style.top = '50px'
+    message.style.visibility = 'visible'
     buttonDisplay()
 }
 
@@ -68,7 +77,6 @@ function cellClicked() {
         return
     }
     updateCell(this, cellIndex)
-    changePlayer()
     checkWinner()
 }
 
@@ -79,6 +87,9 @@ function updateCell(cell, index) {
 
 function changePlayer() {
     currentPlayer = (currentPlayer == 'X') ? 'O' : 'X'
+    message.textContent = `${currentPlayer}'s turn !`
+    /* style of the message box */
+    messageStyle()
 }
 
 function checkWinner() {
@@ -97,15 +108,26 @@ function checkWinner() {
         }
     }
     if (roundWon) {
-          
+        message.textContent = `${currentPlayer}'s wins !`
+        message.style.width = '157px'
+    } else if (!options.includes("")){
+        message.textContent = 'Draw !'
+        message.style.width = '111px'
+    } else {
+        changePlayer()
     }
-
-}
-
-function restartGame() {
-
+    
+    if(roundWon || !options.includes("")){
+        button.innerHTML = 'Restart'
+        button.style.visibility = 'visible'
+        cells.forEach(cell => cell.style.cursor = 'auto')
+    }
 }
 
 button.addEventListener('click', (e) => {
+    currentPlayer = 'X' // the game start with the first player
+    options = ["", "", "", "", "", "", "", "", ""]
+    message.textContent = `${currentPlayer}'s turn !`
+    cells.forEach(cell => cell.textContent = "")
     initalizeGame()
 })

@@ -24,9 +24,12 @@ body{
         border-radius: 25px;
         padding: 0;
         position: relative;
-        top: 100px;
+        top: 0px;
         background-color: #82B6D9;
         box-shadow: 10px 10px #00000040;
+        font-family: 'Permanent Marker', cursive;
+        text-align: center;
+        vertical-align: middle;
     }
 
     .line{
@@ -40,6 +43,7 @@ body{
         height: 100px;
         margin: 0;
         padding: 0;
+        font-size: 70px;
         cursor: pointer;
     }
 
@@ -68,6 +72,6 @@ body{
         width: 134px;
         margin: auto;
         position: relative;
-        top: 150px;
+        top: 50px;
     }
 }
