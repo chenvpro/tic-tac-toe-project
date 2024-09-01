@@ -118,6 +118,7 @@ function checkWinner() {
     }
     
     if(roundWon || !options.includes("")){
+        page = 'restart'
         button.innerHTML = 'Restart'
         button.style.visibility = 'visible'
         cells.forEach(cell => cell.style.cursor = 'auto')
