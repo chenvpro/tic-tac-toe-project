@@ -130,5 +130,6 @@ button.addEventListener('click', (e) => {
     options = ["", "", "", "", "", "", "", "", ""]
     message.textContent = `${currentPlayer}'s turn !`
     cells.forEach(cell => cell.textContent = "")
+    cells.forEach(cell => cell.style.cursor = 'pointer')
     initalizeGame()
 })
