@@ -68,6 +68,8 @@ function initalizeGame() {
     cells.forEach(cell => cell.addEventListener('click', cellClicked))
     page = 'ingame'
     message.style.visibility = 'visible'
+    message.style.color = 'white'
+    message.style.width = '155px'
     buttonDisplay()
 }
 
@@ -110,6 +112,7 @@ function checkWinner() {
     if (roundWon) {
         message.textContent = `${currentPlayer}'s wins !`
         message.style.width = '157px'
+        message.style.color = '#ECEF4D'
     } else if (!options.includes("")){
         message.textContent = 'Draw !'
         message.style.width = '111px'
